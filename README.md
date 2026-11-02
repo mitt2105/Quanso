@@ -15,6 +15,7 @@ PWA ngoại tuyến kế thừa giao diện bốn tab của tệp HTML tham chi�
 - Sáu ô Chỉ huy trực và sáu ô Trực ban có thể chỉnh sửa.
 - Tính tổng vắng/có mặt, cảnh báo khi số liệu không khớp.
 - Xem báo cáo gửi Zalo, sao chép văn bản, lưu lịch sử, xuất hoặc chia sẻ ảnh PNG chi tiết.
+- Ngày trên màn hình, báo cáo, lịch sử và tên tệp hiển thị theo định dạng dd/mm/yyyy; dữ liệu lưu bên trong vẫn dùng chuẩn ISO để giữ tương thích.
 - Xuất và phục hồi bản sao lưu JSON.
 - IndexedDB là nơi lưu chính, localStorage được dùng làm bản dự phòng; service worker lưu giao diện để dùng ngoại tuyến.
 
@@ -63,4 +64,3 @@ Workflow `.github/workflows/pages.yml` tự xuất bản thư mục `www` sau m�
 ## Chuyển đổi dữ liệu cũ
 
 Bản tham chiếu cũ dùng localStorage với khóa `qstb_data_v1`. Ứng dụng tự đọc khóa này lần đầu nếu IndexedDB chưa có dữ liệu, sau đó ghi bản chính vào IndexedDB. Luôn xuất một bản sao lưu trước khi xóa dữ liệu trình duyệt.
-
