@@ -5,7 +5,7 @@ PWA ngoại tuyến kế thừa giao diện bốn tab của tệp HTML tham chi�
 ## Chức năng
 
 - Điểm danh độc lập theo Sáng, Chiều, Tối và bản dự kiến Sáng ngày tiếp theo.
-- Sao chép dữ liệu ca liền trước để chỉ sửa các thay đổi; chiều lấy sáng, tối lấy chiều, dự kiến sáng mai lấy tối, sáng hôm sau lấy dự kiến sáng hôm trước.
+- Sao chép dữ liệu ca liền trước để chỉ sửa các thay đổi; chiều lấy sáng, tối lấy chiều, dự kiến sáng mai lấy sáng cùng ngày, sáng hôm sau lấy dự kiến sáng hôm trước.
 - Chọn cán bộ vắng bằng checkbox; tên đã chọn ở nhóm trên tự ẩn khỏi nhóm dưới. Số lượng vắng tự đếm theo tên đã tích.
 - Riêng nhóm Nghỉ ngoài giờ và Nghỉ chế độ (kể cả tên Nghỉ chế độ đơn vị) có ô nhập nhanh số người nghỉ; các nhóm khác vẫn chọn tên để tự đếm.
 - Tìm nhanh tên theo dấu hoặc không dấu; danh sách lọc ngay khi gõ.
