@@ -5,15 +5,13 @@ PWA ngoại tuyến kế thừa giao diện bốn tab của tệp HTML tham chi�
 ## Chức năng
 
 - Điểm danh độc lập theo Sáng, Chiều, Tối và bản dự kiến Sáng ngày tiếp theo.
-- Chọn người vắng bằng checkbox tối ưu cho điện thoại; tên đã chọn ở nhóm trên tự ẩn khỏi nhóm dưới.
+- Chọn cán bộ vắng bằng checkbox; tên đã chọn ở nhóm trên tự ẩn khỏi nhóm dưới. Số lượng vắng tự đếm theo tên đã tích.
 - Tìm nhanh tên theo dấu hoặc không dấu; danh sách lọc ngay khi gõ.
-- Bố cục điện thoại xếp dọc, ô nhập và checkbox có vùng chạm lớn hơn.
+- Bố cục điện thoại xếp dọc, bộ đếm và checkbox có vùng chạm lớn hơn.
 - Danh sách Chỉ huy trực và Trực ban được nạp lại sau khi dữ liệu đã lưu tải xong.
-- Chọn người vắng bằng checkbox tối ưu cho điện thoại; tên đã chọn ở nhóm trên tự ẩn khỏi các nhóm phía dưới.
-- Danh sách Chỉ huy trực và Trực ban được nạp lại từ dữ liệu đã lưu để hiện trong ô chọn người trực.
 - Danh mục nhóm vắng bắt đầu trống; người dùng tự thêm, sửa hoặc xóa nhóm.
 - Nạp danh sách cán bộ hàng loạt từ CSV/TXT hoặc dán nhiều tên; thêm, sửa, xóa từng người. Tên trùng được gộp.
-- Ghi vắng bằng số lượng hoặc chọn tên trong danh sách cán bộ.
+- Dữ liệu số lượng nhập từ phiên bản cũ vẫn được giữ nếu chưa chuyển nhóm sang chọn tên.
 - Sáu ô Chỉ huy trực và sáu ô Trực ban có thể chỉnh sửa.
 - Tính tổng vắng/có mặt, cảnh báo khi số liệu không khớp.
 - Xem báo cáo gửi Zalo, sao chép văn bản, lưu lịch sử, xuất hoặc chia sẻ ảnh PNG chi tiết.
@@ -65,7 +63,4 @@ Workflow `.github/workflows/pages.yml` tự xuất bản thư mục `www` sau m�
 ## Chuyển đổi dữ liệu cũ
 
 Bản tham chiếu cũ dùng localStorage với khóa `qstb_data_v1`. Ứng dụng tự đọc khóa này lần đầu nếu IndexedDB chưa có dữ liệu, sau đó ghi bản chính vào IndexedDB. Luôn xuất một bản sao lưu trước khi xóa dữ liệu trình duyệt.
-
-
-
 
