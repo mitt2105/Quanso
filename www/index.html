@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123b32">
+<meta name="description" content="Quản lý quân số trực ban ngoại tuyến trên thiết bị.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Quản lý quân số trực ban</title>
+
+<style>
+:root{--green:#123b32;--green2:#1d6653;--mint:#eaf3ef;--ink:#182521;--muted:#6b7974;--line:#dce5e0;--bg:#f4f7f5;--white:#fff;--red:#a43d36}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px}.topbar{background:var(--green);color:white;padding:14px max(16px,calc((100% - 850px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px}.brand-mark{width:40px;height:40px;border-radius:12px;background:#d9eee4;color:var(--green);display:grid;place-items:center;font-weight:900}.brand strong{display:block;font-size:13px;letter-spacing:.5px}.brand small{display:block;color:#c4d8d0;font-size:11px;margin-top:3px}.offline{font-size:11px;color:#cce5d9;white-space:nowrap}main{max-width:850px;margin:auto;padding:14px 14px 32px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;background:#e6ede9;border-radius:13px;padding:5px;margin-bottom:22px}.tab{border:0;background:transparent;border-radius:9px;padding:12px 4px;color:#52615b;font-weight:650;font-size:13px}.tab.active{background:white;color:var(--green);box-shadow:0 1px 5px #183b3217}.page{display:none}.page.active{display:block}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 18px}.eyebrow{font-size:10px;letter-spacing:1.2px;font-weight:800;color:var(--green2);margin:0 0 5px}h1{font-size:25px;margin:0;color:var(--green)}h2{font-size:18px;margin:0;color:var(--green)}h3{font-size:15px;margin:0}.datebox{display:grid;gap:4px;font-size:11px;color:var(--muted)}input,select,textarea{font:inherit;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px;background:white;width:100%;min-width:0}input:focus,select:focus,textarea:focus{outline:2px solid #9bc8b7;border-color:var(--green2)}input[type=date]{padding:10px}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:22px}.metric{background:white;border:1px solid var(--line);border-radius:13px;padding:13px;min-width:0}.metric span{font-size:11px;color:var(--muted);display:block}.metric strong{display:block;font-size:25px;color:var(--green);margin-top:5px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 11px}.section-title>div{min-width:0}.muted{color:var(--muted);font-size:12px;margin:4px 0 0}.shift-picker{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:13px}.shift{border:1px solid var(--line);background:white;border-radius:12px;padding:12px 4px;display:grid;gap:4px;color:var(--ink);text-align:center}.shift span{font-size:19px}.shift b{font-size:13px}.shift small{font-size:10px;color:var(--muted)}.shift.active{border:2px solid var(--green2);background:var(--mint);padding:11px 3px}.shift.forecast{background:#f5f6fb}.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;margin:12px 0}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.save-state{font-size:11px;color:var(--muted)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{display:grid;gap:6px;margin:10px 0}.field label,.field>span{font-size:12px;font-weight:650;color:#52615b}.notice{background:#f1f6f3;border-radius:9px;padding:10px 12px;font-size:11px;line-height:1.5;color:#52615b;margin:13px 0}.compact{margin-top:18px}.btn{border:1px solid var(--line);background:white;color:var(--green);border-radius:10px;padding:11px 14px;font-weight:700;font-size:13px;min-height:42px}.btn.small{padding:8px 11px;min-height:36px;font-size:12px}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.btn.secondary{background:#f7faf8}.btn.danger{color:var(--red);border-color:#e8c9c6}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}.actions.wrap{flex-wrap:wrap;justify-content:flex-start}.officials{margin-top:14px}.groups-empty{padding:14px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:12px}.absence-row{border:1px solid var(--line);border-radius:11px;padding:12px;margin:9px 0}.absence-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}.absence-head strong{font-size:13px}.absence-controls{display:grid;grid-template-columns:1fr 1.5fr;gap:8px}.absence-controls label{font-size:10px;color:var(--muted);display:grid;gap:4px}.absence-controls input,.absence-controls select{padding:9px;font-size:13px}.name-select{min-height:74px}.absence-names{display:grid;gap:2px;max-height:190px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff;padding:4px}.person-check{display:flex;align-items:center;gap:10px;min-height:40px;padding:6px 8px;border-bottom:1px solid #edf1ee;font-size:14px;cursor:pointer;touch-action:manipulation}.person-check:last-child{border-bottom:0}.person-check input{width:21px;height:21px;min-width:21px;margin:0;accent-color:var(--green2)}.person-check span{line-height:1.25}.person-row,.settings-row{display:flex;align-items:center;gap:8px;margin:8px 0}.person-row input{flex:1}.person-row span{font-size:12px;color:var(--muted);width:20px}.settings-row strong{font-size:13px;flex:1}.tiny{font-size:10px}.file-button{display:inline-flex;align-items:center;cursor:pointer}.file-button input{display:none}textarea{resize:vertical;line-height:1.5}.staff-entry{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}.staff-entry:last-child{border:0}.staff-entry strong{font-size:13px;flex:1;min-width:0;overflow-wrap:anywhere}.staff-actions{display:flex;gap:5px}.staff-bulk{display:grid;gap:9px}.staff-bulk textarea{min-height:170px}.history-item{border-bottom:1px solid var(--line);padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:10px}.history-item:last-child{border:0}.history-item strong{font-size:13px}.history-item small{display:block;color:var(--muted);margin-top:4px}.history-item button{flex-shrink:0}footer{text-align:center;color:#82908a;font-size:10px;padding:15px}dialog{border:0;border-radius:16px;padding:20px;width:min(90%,400px);box-shadow:0 12px 50px #0003}dialog::backdrop{background:#10251f77}dialog h2{margin-bottom:15px}#groupForm .actions{margin-top:18px}@media(max-width:480px){main{padding:12px 11px 25px}.page-heading{align-items:flex-start}h1{font-size:22px}.datebox{max-width:145px}.summary-grid{gap:6px}.metric{padding:10px}.metric strong{font-size:22px}.metric span{font-size:10px}.shift-picker{gap:5px}.shift{padding:10px 2px}.shift b{font-size:12px}.panel{padding:13px}.form-grid{grid-template-columns:1fr}.absence-controls{grid-template-columns:1fr 1fr}.actions .btn{flex:1}.tabs .tab{font-size:11px;padding:11px 2px}}
+.name-picker{min-width:0}.name-label{display:block;margin-bottom:5px;font-size:11px;font-weight:650;color:#52615b}.name-search{display:flex;align-items:center;gap:7px;min-height:44px;margin-bottom:7px;padding:0 9px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--muted)}.name-search:focus-within{border-color:var(--green2);box-shadow:0 0 0 2px #9bc8b744}.name-search>span{font-size:20px;line-height:1}.name-search input{flex:1;width:100%;min-height:42px;padding:8px 2px;border:0;background:transparent;box-shadow:none;outline:none;font-size:14px}.name-search input:focus{outline:none}.clear-search{border:0;background:transparent;color:var(--muted);font-size:21px;min-width:32px;min-height:36px;cursor:pointer}.absence-names{max-height:220px;overscroll-behavior:contain}.absence-controls .person-check[hidden]{display:none!important}.absence-controls .person-check{display:flex;align-items:center;gap:11px;min-height:46px;padding:7px 9px;font-size:14px}.absence-controls .person-check input{flex:0 0 22px;width:22px;height:22px;min-width:22px}.person-check span{overflow-wrap:anywhere}.no-search-results{padding:8px}.btn{min-height:44px}@media(max-width:600px){main{padding:10px 10px 28px}.panel{padding:12px}.absence-row{padding:12px}.absence-controls{grid-template-columns:minmax(0,1fr);gap:12px}.absence-controls>label{margin:0}.absence-controls .qty{min-height:48px;font-size:16px}.name-search{min-height:48px}.name-search input{min-height:46px;font-size:16px}.absence-names{max-height:min(34vh,270px)}.absence-controls .person-check{min-height:50px;font-size:15px}.absence-head strong{font-size:14px}.shift-picker{grid-template-columns:repeat(4,minmax(0,1fr))}.actions .btn{min-height:44px}}</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">QS</div><div><strong>QUÂN SỐ TRỰC BAN</strong><small>Đội Quản lý, sử dụng động vật nghiệp vụ</small></div></div>
+  <span class="offline" id="connection">● Sẵn sàng</span>
+</header>
+<main>
+  <nav class="tabs" aria-label="Điều hướng">
+    <button class="tab active" data-page="attendance">Điểm danh</button>
+    <button class="tab" data-page="report">Báo cáo</button>
+    <button class="tab" data-page="history">Lịch sử</button>
+    <button class="tab" data-page="settings">Cài đặt</button>
+  </nav>
+
+  <section id="page-attendance" class="page active">
+    <div class="page-heading"><div><p class="eyebrow">CẬP NHẬT HẰNG NGÀY</p><h1>Điểm danh quân số</h1></div><div class="datebox"><label for="reportDate">Ngày báo cáo</label><input id="reportDate" type="date"></div></div>
+    <div class="summary-grid">
+      <article class="metric"><span>Tổng quân số</span><strong id="totalMetric">0</strong></article>
+      <article class="metric"><span>Vắng</span><strong id="absentMetric">0</strong></article>
+      <article class="metric"><span>Có mặt</span><strong id="presentMetric">0</strong></article>
+    </div>
+    <p class="notice" id="validationState" aria-live="polite">Nhập quân số để kiểm tra số liệu.</p>
+    <div class="section-title"><h2>Lần điểm danh</h2><span class="muted">Chọn ca để cập nhật</span></div>
+    <div class="shift-picker">
+      <button class="shift active" data-shift="Sáng"><span>🌅</span><b>Sáng</b><small>Điểm danh</small></button>
+      <button class="shift" data-shift="Chiều"><span>☀️</span><b>Chiều</b><small>Điểm danh</small></button>
+      <button class="shift" data-shift="Tối"><span>🌙</span><b>Tối</b><small>Điểm danh</small></button>
+      <button class="shift forecast" data-shift="Dự kiến sáng mai"><span>📅</span><b>Sáng mai</b><small>Dự kiến</small></button>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><p class="eyebrow" id="shiftEyebrow">BUỔI SÁNG</p><h2 id="shiftTitle">Điểm danh sáng</h2></div><span class="save-state" id="saveState">Chưa lưu</span></div>
+      <div class="form-grid">
+        <div class="field"><label for="totalForce">Tổng quân số của đơn vị</label><input id="totalForce" type="number" min="0" step="1" inputmode="numeric" placeholder="Nhập tổng quân số"></div>
+        <div class="field"><label for="manualPresent">Số có mặt (nhập nhanh)</label><input id="manualPresent" type="number" min="0" step="1" inputmode="numeric" placeholder="Để trống nếu tính từ số vắng"></div>
+      </div>
+      <div class="notice">Có thể nhập nhanh số lượng vắng theo từng nhóm hoặc chọn tên cán bộ. Không nhập trùng một người ở nhiều nhóm.</div>
+      <div class="section-title compact"><h3>Nhóm vắng mặt</h3><button class="btn small" id="addGroupInline">＋ Thêm nhóm</button></div>
+      <div id="absenceGroups" class="groups-empty">Chưa có nhóm vắng mặt. Vào Cài đặt để tạo danh mục.</div>
+      <div class="form-grid officials">
+        <div class="field"><label for="commander">Chỉ huy trực</label><select id="commander"></select></div>
+        <div class="field"><label for="dutyOfficer">Trực ban</label><select id="dutyOfficer"></select></div>
+      </div>
+      <div class="field"><label for="notes">Ghi chú</label><textarea id="notes" rows="2" placeholder="Thông tin phát sinh (nếu có)"></textarea></div>
+      <div class="actions"><button class="btn secondary" id="resetShift">Xóa dữ liệu ca này</button><button class="btn primary" id="saveShift">Lưu điểm danh</button></div>
+    </div>
+  </section>
+
+  <section id="page-report" class="page">
+    <div class="page-heading"><div><p class="eyebrow">TỔNG HỢP VÀ CHIA SẺ</p><h1>Tạo báo cáo</h1></div></div>
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field"><label for="reportShift">Nội dung báo cáo</label><select id="reportShift"><option>Sáng</option><option>Chiều</option><option>Tối</option><option>Dự kiến sáng mai</option><option>Tổng hợp cuối ngày</option></select></div>
+        <div class="field"><label for="reportDate2">Ngày báo cáo</label><input id="reportDate2" type="date"></div>
+      </div>
+      <div class="field"><label for="reportPreview">Nội dung xem trước</label><textarea id="reportPreview" rows="15" readonly></textarea></div>
+      <div class="actions wrap"><button class="btn secondary" id="refreshReport">Cập nhật xem trước</button><button class="btn primary" id="copyReport">Sao chép báo cáo</button><button class="btn primary" id="exportImage">Xuất ảnh PNG</button><button class="btn secondary" id="shareImage">Chia sẻ ảnh</button><button class="btn secondary" id="saveReport">Lưu báo cáo</button></div>
+      <p class="muted tiny" id="copyStatus" aria-live="polite">Báo cáo được tạo từ dữ liệu đã lưu của ca được chọn.</p>
+    </div>
+  </section>
+
+  <section id="page-history" class="page">
+    <div class="page-heading"><div><p class="eyebrow">DỮ LIỆU ĐÃ LƯU</p><h1>Lịch sử báo cáo</h1></div></div>
+    <div class="panel"><div id="historyList" class="history-list"><p class="muted">Chưa có báo cáo đã lưu.</p></div></div>
+  </section>
+
+  <section id="page-settings" class="page">
+    <div class="page-heading"><div><p class="eyebrow">THIẾT LẬP BAN ĐẦU</p><h1>Cài đặt</h1></div></div>
+    <div class="panel">
+      <div class="section-title"><div><h2>Danh mục nhóm vắng mặt</h2><p class="muted">Danh mục ban đầu để trống; tự tạo theo nhu cầu.</p></div><button class="btn primary small" id="addGroup">＋ Thêm nhóm</button></div>
+      <div id="settingsGroups" class="settings-list"></div>
+    </div>
+    <div class="panel">
+      <div class="section-title"><div><h2>Danh sách Chỉ huy trực</h2><p class="muted">Tối đa 6 người; có thể sửa tên.</p></div></div>
+      <div id="commanders" class="person-list"></div>
+    </div>
+    <div class="panel">
+      <div class="section-title"><div><h2>Danh sách Trực ban</h2><p class="muted">Tối đa 6 người; có thể sửa tên.</p></div></div>
+      <div id="dutyOfficers" class="person-list"></div>
+    </div>
+    <div class="panel">
+      <div class="section-title"><div><h2>Danh sách cán bộ</h2><p class="muted">Nạp danh sách từ tệp CSV/TXT hoặc dán nhiều tên cùng lúc; vẫn có thể nhập số lượng vắng.</p></div><div class="staff-actions"><button class="btn secondary small" id="importStaff">Nạp danh sách</button><button class="btn primary small" id="addStaff">＋ Thêm</button></div></div>
+      <div id="staffList" class="person-list"></div>
+    </div>
+    <div class="panel">
+      <h2>Dữ liệu và sao lưu</h2>
+      <p class="muted">Dữ liệu hiện được lưu trên chính trình duyệt/thiết bị này. Khi đổi điện thoại hoặc xóa dữ liệu trình duyệt, cần phục hồi từ tệp sao lưu.</p>
+      <div class="actions wrap"><button class="btn secondary" id="exportData">Xuất tệp sao lưu</button><label class="btn secondary file-button">Nhập tệp sao lưu<input type="file" id="importData" accept="application/json"></label><button class="btn danger" id="clearAll">Xóa toàn bộ dữ liệu</button></div>
+    </div>
+  </section>
+</main>
+<footer>Phiên bản thử nghiệm • Dữ liệu lưu trên thiết bị</footer>
+<dialog id="staffNameDialog"><form method="dialog" id="staffNameForm"><h2 id="staffNameTitle">Thêm cán bộ</h2><label class="field"><span>Họ và tên</span><input id="staffNameInput" maxlength="120" required placeholder="Nhập họ tên"></label><div class="actions"><button class="btn secondary" value="cancel">Hủy</button><button class="btn primary" value="default">Lưu</button></div></form></dialog><dialog id="staffImportDialog"><form method="dialog" id="staffImportForm"><h2>Nạp danh sách cán bộ</h2><p class="muted">Chọn tệp .TXT hoặc .CSV, hoặc dán danh sách bên dưới. Mỗi dòng là một người; với CSV lấy cột đầu tiên. Các tên trùng sẽ được gộp.</p><label class="btn secondary file-button">Chọn tệp TXT/CSV<input type="file" id="staffFile" accept=".txt,.csv,text/plain,text/csv"></label><label class="field"><span>Danh sách tên</span><textarea id="staffBulkText" placeholder="Nguyễn Văn A&#10;Trần Thị B&#10;Lê Văn C"></textarea></label><p class="muted tiny" id="staffImportStatus">Danh sách mới sẽ được thêm vào danh sách hiện có.</p><div class="actions wrap"><button class="btn secondary" value="cancel">Hủy</button><button class="btn secondary" id="replaceStaff" type="button">Thay toàn bộ danh sách</button><button class="btn primary" id="appendStaff" type="button">Thêm vào danh sách</button></div></form></dialog><dialog id="groupDialog"><form method="dialog" id="groupForm"><h2 id="groupDialogTitle">Thêm nhóm vắng</h2><label class="field"><span>Tên nhóm</span><input id="groupName" maxlength="80" required placeholder="Nhập tên nhóm"></label><div class="actions"><button class="btn secondary" value="cancel">Hủy</button><button class="btn primary" id="confirmGroup" value="default">Lưu</button></div></form></dialog>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id), today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}, plusDay=s=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}, fmt=s=>s?new Date(s+'T12:00:00').toLocaleDateString('vi-VN'):'';
+const KEY='qstb_data_v1';let db=fresh(),shift='Sáng',editingGroup=null,editingStaff=null,nameFilters={},currentDate=today();
+function fresh(){return {groups:[],commanders:Array(6).fill(''),duties:Array(6).fill(''),staff:[],total:0,days:{},history:[]}}
+function load(){try{return {...fresh(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{return fresh()}}
+function persist(){const snapshot=JSON.stringify(db);try{localStorage.setItem(KEY,snapshot)}catch{};if(window.indexedDB){const req=indexedDB.open('quanso-offline',1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains('app'))req.result.createObjectStore('app')};req.onsuccess=()=>{const tx=req.result.transaction('app','readwrite');tx.objectStore('app').put(snapshot,'state');tx.oncomplete=()=>req.result.close()}};$('saveState').textContent='Đã lưu trên thiết bị'}
+function day(){return $('reportDate').value||today()}
+function key(d=day(),s=shift){return d+'|'+s}
+function record(d=day(),s=shift){return db.days[key(d,s)]||{total:db.total||0,manualPresent:'',absences:{},commander:'',duty:'',notes:''}}
+function uniqueSelected(exceptKey){const used=new Set();Object.entries(db.days).forEach(([k,r])=>{if(k===exceptKey)return;Object.values(r.absences||{}).forEach(a=>(a.names||[]).forEach(n=>used.add(n)))});return used}
+function renderOfficials(){[['commander',db.commanders],['dutyOfficer',db.duties]].forEach(([id,list])=>{const el=$(id),v=el.value;el.innerHTML='<option value="">-- Chọn người trực --</option>'+list.map((n,i)=>n.trim()?`<option value="${esc(n)}">${esc(n)}</option>`:'').join('');if([...el.options].some(o=>o.value===v))el.value=v})}
+function normalizeName(s){return String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[đĐ]/g,'d').toLowerCase()}function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){renderPeople('commanders',db.commanders);renderPeople('dutyOfficers',db.duties);renderOfficials();renderGroups();renderSettings();renderStaff();renderMetrics();$('reportDate2').value=day()}
+function renderGroups(){const r=record(),box=$('absenceGroups');if(!db.groups.length){box.className='groups-empty';box.textContent='Chưa có nhóm vắng mặt. Vào Cài đặt để tạo danh mục.';return}box.className='';const used=new Set();let cleaned=false;r.absences=r.absences||{};box.innerHTML=db.groups.map(g=>{const a=r.absences[g.id]||{count:'',names:[]},names=(a.names||[]).filter(n=>!used.has(n)),selected=new Set(names),available=db.staff.filter(n=>n.trim()&&!used.has(n));if(names.length!==(a.names||[]).length){r.absences[g.id]={...a,names};cleaned=true}selected.forEach(n=>used.add(n));const checklist=available.length?available.map(n=>`<label class="person-check"><input class="person-check-input" type="checkbox" value="${esc(n)}" ${selected.has(n)?'checked':''}><span>${esc(n)}</span></label>`).join(''):'<p class="muted no-matches">Không có tên phù hợp trong nhóm này.</p>';return `<div class="absence-row" data-group="${esc(g.id)}"><div class="absence-head"><strong>${esc(g.name)}</strong><button class="btn small secondary edit-this" data-id="${esc(g.id)}">Sửa nhóm</button></div><div class="absence-controls"><label>Số lượng nhập nhanh<input class="qty" type="number" min="0" step="1" inputmode="numeric" value="${esc(a.count??'')}" placeholder="0"></label><div class="name-picker"><label class="tiny name-label">Tích tên cán bộ vắng</label><div class="name-search"><span aria-hidden="true">⌕</span><input class="name-search-input" type="search" autocomplete="off" placeholder="Tìm nhanh theo tên…" value="${esc(nameFilters[g.id]||'')}"><button class="clear-search" type="button" aria-label="Xóa nội dung tìm kiếm">×</button></div><div class="absence-names">${checklist}<p class="muted no-search-results" hidden>Không tìm thấy tên phù hợp.</p></div></div></div><p class="muted tiny">Tên đã tích ở nhóm phía trên sẽ được ẩn tại các nhóm phía dưới.</p></div>`}).join('');if(cleaned){db.days[key()]=r;persist()}box.querySelectorAll('.absence-row').forEach(row=>{row.querySelector('.qty').addEventListener('input',()=>saveCurrent(false));const search=row.querySelector('.name-search-input'),applyFilter=()=>{nameFilters[row.dataset.group]=search.value;const q=normalizeName(search.value),items=[...row.querySelectorAll('.person-check')];let visible=0;items.forEach(item=>{item.hidden=!normalizeName(item.querySelector('span').textContent).includes(q);if(!item.hidden)visible++});const noMatch=row.querySelector('.no-search-results');if(noMatch)noMatch.hidden=!q||visible>0};search.addEventListener('input',applyFilter);row.querySelector('.clear-search').addEventListener('click',()=>{search.value='';applyFilter();search.focus()});applyFilter();row.querySelectorAll('.person-check-input').forEach(input=>input.addEventListener('change',()=>{saveCurrent(false);renderGroups()}));row.querySelector('.edit-this').addEventListener('click',()=>openGroup(row.dataset.group))})}function collect(){const r=record(),absences={};document.querySelectorAll('.absence-row').forEach(row=>{const id=row.dataset.group,qty=row.querySelector('.qty').value,names=[...row.querySelectorAll('.person-check-input:checked')].map(o=>o.value);absences[id]={count:qty,names}});return {...r,total:$('totalForce').value,manualPresent:$('manualPresent').value,absences,commander:$('commander').value,duty:$('dutyOfficer').value,notes:$('notes').value}}function saveCurrent(show=true){db.days[key()]=collect();persist();renderMetrics();if(show)$('saveState').textContent='Đã lưu'}
+function absentCount(r){return Object.values(r.absences||{}).reduce((sum,a)=>sum+((a.names||[]).length? a.names.length:Math.max(0,parseInt(a.count||0,10)||0)),0)}
+function counts(r){const total=Math.max(0,parseInt(r.total||0,10)||0),abs=absentCount(r),present=r.manualPresent!==''&&r.manualPresent!=null?Math.max(0,parseInt(r.manualPresent,10)||0):Math.max(0,total-abs);return {total,abs,present,valid:present+abs===total}}
+function renderMetrics(){const r=record(),c=counts(r);$('totalMetric').textContent=c.total;$('absentMetric').textContent=c.abs;$('presentMetric').textContent=c.present;const state=$('validationState');if(state){state.textContent=!c.total&&!c.abs?'Nhập quân số để kiểm tra số liệu.':c.valid?'✓ Số liệu khớp: có mặt + vắng = tổng quân số.':`⚠ Số liệu chưa khớp: có mặt + vắng = ${c.present+c.abs}, tổng quân số = ${c.total}.`;state.style.color=c.valid?'#1d6653':'#a43d36';state.style.background=c.valid?'#eaf3ef':'#fff0ef'}}
+function loadShift(){const r=record();$('shiftTitle').textContent=shift==='Dự kiến sáng mai'?'Dự kiến quân số sáng ngày tiếp theo':'Điểm danh '+shift.toLowerCase();$('shiftEyebrow').textContent=shift.toUpperCase();$('totalForce').value=r.total??'';$('manualPresent').value=r.manualPresent??'';$('commander').value=r.commander||'';$('dutyOfficer').value=r.duty||'';$('notes').value=r.notes||'';renderGroups();renderMetrics();$('saveState').textContent='Dữ liệu ca này';}
+function setShift(s){saveCurrent(false);shift=s;document.querySelectorAll('.shift').forEach(b=>b.classList.toggle('active',b.dataset.shift===s));loadShift()}
+function reportText(d,s){const r=db.days[d+'|'+s];if(!r)return `CHƯA CÓ DỮ LIỆU ĐIỂM DANH ${s.toUpperCase()} NGÀY ${fmt(d)}.`;const c=counts(r),lines=[`*QUÂN SỐ ${s==='Dự kiến sáng mai'?'DỰ KIẾN SÁNG NGÀY '+fmt(plusDay(d)):s.toUpperCase()+' NGÀY '+fmt(d)}:*`,`• Tổng quân số: ${c.total} đ/c`,`• Vắng: ${c.abs} đ/c`];db.groups.forEach(g=>{const a=r.absences?.[g.id];if(!a)return;const n=(a.names||[]).length? a.names.length:Math.max(0,parseInt(a.count||0,10)||0);if(!n)return;const names=(a.names||[]).length?' ('+a.names.join(', ')+')':'';lines.push(`- ${g.name}: ${String(n).padStart(2,'0')} đ/c${names}`)});lines.push(`• Hiện diện: ${c.present} đ/c`);if(!c.valid)lines.push(`⚠️ LƯU Ý: Số liệu chưa khớp (có mặt + vắng = ${c.present+c.abs}, tổng = ${c.total}).`);if(r.commander)lines.push(`• Trực chỉ huy: ${r.commander}.`);if(r.duty)lines.push(`• Trực ban: ${r.duty}.`);if(r.notes)lines.push(`• Ghi chú: ${r.notes}`);return lines.join('\n')}
+function buildReport(){const d=$('reportDate2').value||day(),s=$('reportShift').value;if(s!=='Tổng hợp cuối ngày')return reportText(d,s);return ['*TỔNG HỢP QUÂN SỐ NGÀY '+fmt(d)+':*','SÁNG',reportText(d,'Sáng'),'','CHIỀU',reportText(d,'Chiều'),'','TỐI',reportText(d,'Tối'),'','DỰ KIẾN SÁNG HÔM SAU',reportText(d,'Dự kiến sáng mai')].join('\n')}
+function renderSettings(){$('settingsGroups').innerHTML=db.groups.length?db.groups.map(g=>`<div class="settings-row"><strong>${esc(g.name)}</strong><button class="btn small secondary" data-edit="${g.id}">Sửa</button><button class="btn small danger" data-delete="${g.id}">Xóa</button></div>`).join(''):'<p class="muted">Chưa tạo nhóm nào.</p>';$('settingsGroups').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>openGroup(b.dataset.edit));$('settingsGroups').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteGroup(b.dataset.delete))}
+function renderPeople(id,arr){$(id).innerHTML=arr.map((n,i)=>`<div class="person-row"><span>${i+1}.</span><input data-person="${i}" value="${esc(n)}" placeholder="Nhập họ tên"><button class="btn small secondary" data-clear="${i}">Xóa</button></div>`).join('');$(id).querySelectorAll('[data-person]').forEach(inp=>inp.addEventListener('change',()=>{arr[+inp.dataset.person]=inp.value.trim();persist();renderOfficials()}));$(id).querySelectorAll('[data-clear]').forEach(b=>b.onclick=()=>{arr[+b.dataset.clear]='';persist();renderPeople(id,arr);renderOfficials()})}
+function renderStaff(){$('staffList').innerHTML=db.staff.map((n,i)=>`<div class="staff-entry"><strong>${esc(n)}</strong><div class="staff-actions"><button class="btn small secondary" data-editstaff="${i}">Sửa</button><button class="btn small danger" data-delstaff="${i}">Xóa</button></div></div>`).join('')||'<p class="muted">Chưa có cán bộ trong danh sách.</p>';$('staffList').querySelectorAll('[data-editstaff]').forEach(b=>b.onclick=()=>openStaffEditor(+b.dataset.editstaff));$('staffList').querySelectorAll('[data-delstaff]').forEach(b=>b.onclick=()=>{const i=+b.dataset.delstaff,n=db.staff[i];if(confirm(`Xóa ${n} khỏi danh sách? Tên đã lưu trong các ca cũ vẫn được giữ.`)){db.staff.splice(i,1);persist();renderStaff();renderGroups()}})}
+function openStaffEditor(index=null){editingStaff=index;$('staffNameTitle').textContent=index===null?'Thêm cán bộ':'Sửa tên cán bộ';$('staffNameInput').value=index===null?'':db.staff[index];$('staffNameDialog').showModal();$('staffNameInput').focus()}
+function parseStaffList(text){const rows=String(text||'').replace(/^\uFEFF/,'').split(/\r?\n/),out=[],seen=new Set(db.staff.map(n=>n.trim().toLocaleLowerCase('vi')));for(const row of rows){const line=row.trim();if(!line)continue;const match=line.match(/^(?:"((?:[^"]|"")*)"|([^,;\t]*))/),name=(match?(match[1]??match[2]):line).replace(/""/g,'"').trim();if(!name||/^(họ\s*tên|ho\s*ten|họ và tên|name|full name)$/i.test(name))continue;const key=name.toLocaleLowerCase('vi');if(!seen.has(key)){seen.add(key);out.push(name)}}return out}
+function applyStaffList(replace){const names=parseStaffList($('staffBulkText').value);if(!names.length){$('staffImportStatus').textContent='Không tìm thấy tên mới để nhập.';return}if(replace){if(!confirm(`Thay danh sách hiện tại bằng ${names.length} tên? Dữ liệu các ca đã lưu vẫn được giữ.`))return;db.staff=names}else db.staff.push(...names);persist();renderStaff();renderGroups();$('staffImportStatus').textContent=`Đã ${replace?'thay':'thêm'} ${names.length} cán bộ vào danh sách.`;$('staffImportDialog').close()}function openGroup(id=null){editingGroup=id;$('groupDialogTitle').textContent=id?'Sửa nhóm vắng':'Thêm nhóm vắng';$('groupName').value=id?(db.groups.find(g=>g.id===id)?.name||''):'';$('groupDialog').showModal();$('groupName').focus()}
+function deleteGroup(id){if(!confirm('Xóa nhóm này khỏi danh mục? Dữ liệu điểm danh cũ của nhóm cũng sẽ bị xóa.'))return;db.groups=db.groups.filter(g=>g.id!==id);Object.values(db.days).forEach(r=>delete r.absences[id]);persist();render()}
+function renderHistory(){$('historyList').innerHTML=db.history.length?db.history.slice().reverse().map((h,i)=>`<div class="history-item"><div><strong>${esc(h.title)}</strong><small>${esc(h.date)} • Đã lưu</small></div><button class="btn small secondary" data-history="${db.history.length-1-i}">Xem</button></div>`).join(''):'<p class="muted">Chưa có báo cáo đã lưu.</p>';$('historyList').querySelectorAll('[data-history]').forEach(b=>b.onclick=()=>{const h=db.history[+b.dataset.history];$('reportDate2').value=h.date;$('reportPreview').value=h.text;document.querySelector('[data-page="report"]').click()})}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.page').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('page-'+b.dataset.page).classList.add('active');if(b.dataset.page==='report'){$('reportDate2').value=day();$('reportPreview').value=buildReport()}if(b.dataset.page==='history')renderHistory();if(b.dataset.page==='settings')render()});
+document.querySelectorAll('.shift').forEach(b=>b.onclick=()=>setShift(b.dataset.shift));
+$('reportDate').value=today();$('reportDate2').value=today();
+async function start(){if(window.indexedDB){try{const req=indexedDB.open('quanso-offline',1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains('app'))req.result.createObjectStore('app')};await new Promise((resolve,reject)=>{req.onsuccess=resolve;req.onerror=reject});const idb=req.result;const value=await new Promise((resolve,reject)=>{const q=idb.transaction('app').objectStore('app').get('state');q.onsuccess=()=>resolve(q.result);q.onerror=reject});if(value)db={...fresh(),...JSON.parse(value)};else{db=load();persist()}idb.close()}catch{db=load()}}else db=load();render();loadShift()}
+start();
+['totalForce','manualPresent','commander','dutyOfficer','notes'].forEach(id=>$(id).addEventListener('change',()=>saveCurrent(false)));$('reportDate').onchange=()=>{const next=$('reportDate').value||today();if(currentDate!==next){db.days[currentDate+'|'+shift]=collect();currentDate=next;persist();loadShift()}};
+$('addGroup').onclick=$('addGroupInline').onclick=()=>openGroup();$('groupForm').onsubmit=e=>{e.preventDefault();const name=$('groupName').value.trim();if(!name)return;if(editingGroup){db.groups.find(g=>g.id===editingGroup).name=name}else db.groups.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),name});persist();$('groupDialog').close();render()};
+$('saveShift').onclick=()=>{saveCurrent();alert('Đã lưu dữ liệu điểm danh.')};$('resetShift').onclick=()=>{if(confirm('Xóa dữ liệu của lần điểm danh này?')){delete db.days[key()];persist();loadShift()}};
+$('refreshReport').onclick=()=>$('reportPreview').value=buildReport();$('reportShift').onchange=()=>$('reportPreview').value=buildReport();$('reportDate2').onchange=()=>$('reportPreview').value=buildReport();
+$('copyReport').onclick=async()=>{const t=buildReport();try{await navigator.clipboard.writeText(t);$('copyStatus').textContent='Đã sao chép. Bạn có thể dán vào Zalo.'}catch{$('reportPreview').readOnly=false;$('reportPreview').focus();$('reportPreview').select();$('copyStatus').textContent='Không thể tự sao chép trên trình duyệt này; hãy nhấn giữ nội dung và chọn Sao chép.';$('reportPreview').readOnly=true}};
+$('saveReport').onclick=()=>{const d=$('reportDate2').value||day(),s=$('reportShift').value,t=buildReport();db.history.push({date:d,title:s,text:t});persist();renderHistory();$('copyStatus').textContent='Đã lưu báo cáo vào lịch sử.'};
+$('commanders').dataset.init='1';renderPeople('commanders',db.commanders);renderPeople('dutyOfficers',db.duties);
+$('addStaff').onclick=()=>openStaffEditor();$('importStaff').onclick=()=>{$('staffBulkText').value='';$('staffImportStatus').textContent='Danh sách mới sẽ được thêm vào danh sách hiện có.';$('staffImportDialog').showModal()};$('staffNameForm').onsubmit=e=>{e.preventDefault();const name=$('staffNameInput').value.trim();if(!name)return;const duplicate=db.staff.some((n,i)=>i!==editingStaff&&n.trim().toLocaleLowerCase('vi')===name.toLocaleLowerCase('vi'));if(duplicate){alert('Tên này đã có trong danh sách.');return}if(editingStaff===null)db.staff.push(name);else{const old=db.staff[editingStaff];db.staff[editingStaff]=name;Object.values(db.days).forEach(r=>Object.values(r.absences||{}).forEach(a=>a.names=(a.names||[]).map(n=>n===old?name:n)))}persist();renderStaff();renderGroups();$('staffNameDialog').close()};$('staffFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{$('staffBulkText').value=await f.text();$('staffImportStatus').textContent='Đã đọc tệp. Kiểm tra danh sách rồi chọn cách nhập.'}catch{$('staffImportStatus').textContent='Không đọc được tệp này.'}e.target.value=''};$('appendStaff').onclick=()=>applyStaffList(false);$('replaceStaff').onclick=()=>applyStaffList(true);
+$('exportData').onclick=()=>{const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sao-luu-quan-so-'+today()+'.json';a.click();URL.revokeObjectURL(a.href)};
+$('importData').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!x||!Array.isArray(x.groups)||!x.days)throw Error();if(confirm('Nhập tệp sẽ thay thế dữ liệu hiện tại. Tiếp tục?')){db={...fresh(),...x};persist();render();loadShift();alert('Đã phục hồi dữ liệu.')}}catch{alert('Tệp sao lưu không hợp lệ.')}e.target.value=''};
+$('clearAll').onclick=()=>{if(confirm('CẢNH BÁO: Xóa toàn bộ dữ liệu trên thiết bị này? Hãy xuất sao lưu trước nếu cần.')){db=fresh();persist();render();loadShift()}};
+// Xuất báo cáo thành ảnh PNG, không cần thư viện hoặc kết nối mạng.
+function exportReportImage(share=false){
+ const text=buildReport(), source=text.split('\n'), width=1200, pad=72;
+ const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+ const contentWidth=width-pad*2, lineHeight=43, bodyFont='27px Arial';
+ ctx.font=bodyFont;
+ const rows=[];
+ source.forEach(raw=>{
+   const line=raw.trimEnd();
+   if(!line){rows.push({text:'',kind:'space'});return}
+   let kind='normal';
+   if(line.startsWith('*'))kind='title';
+   else if(line.startsWith('•'))kind='summary';
+   else if(line.startsWith('-'))kind='detail';
+   else if(line.startsWith('⚠'))kind='warning';
+   else if(/^(SÁNG|CHIỀU|TỐI|DỰ KIẾN SÁNG HÔM SAU)$/.test(line.trim()))kind='section';
+   const clean=line.replace(/\*/g,'');
+   const words=clean.split(/\s+/);let current='';
+   const font=kind==='title'?'bold 31px Arial':kind==='section'?'bold 28px Arial':kind==='summary'?'bold 27px Arial':bodyFont;
+   ctx.font=font;
+   words.forEach(word=>{
+     const test=current?current+' '+word:word;
+     if(ctx.measureText(test).width>contentWidth && current){rows.push({text:current,kind});current=word}
+     else current=test;
+   });
+   if(current)rows.push({text:current,kind});
+ });
+ const headerH=180, footerH=100;
+ let bodyH=pad;
+ rows.forEach(r=>bodyH+=r.kind==='space'?20:(r.kind==='title'?54:r.kind==='section'?62:lineHeight));
+ const height=headerH+bodyH+footerH;
+ canvas.width=width;canvas.height=height;
+ ctx.fillStyle='#f3f6f4';ctx.fillRect(0,0,width,height);
+ ctx.fillStyle='#123b32';ctx.fillRect(0,0,width,headerH);
+ ctx.fillStyle='#d9eee4';ctx.font='bold 21px Arial';ctx.fillText('ĐỘI QUẢN LÝ, SỬ DỤNG ĐỘNG VẬT NGHIỆP VỤ',pad,48);
+ ctx.fillStyle='#ffffff';ctx.font='bold 39px Arial';ctx.fillText('BÁO CÁO QUÂN SỐ TRỰC BAN',pad,105);
+ ctx.fillStyle='#d9eee4';ctx.font='23px Arial';ctx.fillText('BÁO CÁO CHI TIẾT  •  '+fmt($('reportDate2').value||day()),pad,148);
+ let y=headerH+pad;
+ rows.forEach(r=>{
+   if(r.kind==='space'){y+=20;return}
+   if(r.kind==='title'){
+     ctx.fillStyle='#e4eee9';ctx.fillRect(pad-12,y-34,contentWidth+24,48);
+     ctx.fillStyle='#123b32';ctx.font='bold 31px Arial';
+   }else if(r.kind==='section'){
+     ctx.fillStyle='#dcebe4';ctx.fillRect(pad-12,y-36,contentWidth+24,49);
+     ctx.fillStyle='#123b32';ctx.font='bold 28px Arial';
+   }else if(r.kind==='summary'){
+     ctx.fillStyle='#1d6653';ctx.font='bold 27px Arial';
+   }else if(r.kind==='warning'){
+     ctx.fillStyle='#a43d36';ctx.font='bold 25px Arial';
+   }else{
+     ctx.fillStyle='#26332e';ctx.font=bodyFont;
+   }
+   ctx.fillText(r.text,pad,y);
+   y+=r.kind==='title'?54:r.kind==='section'?62:lineHeight;
+ });
+ const footerY=height-footerH;
+ ctx.fillStyle='#dce5e0';ctx.fillRect(pad,footerY,width-pad*2,2);
+ ctx.fillStyle='#718078';ctx.font='19px Arial';ctx.fillText('Tạo từ chương trình Quản lý quân số trực ban',pad,footerY+42);
+ ctx.fillText('Vui lòng kiểm tra số liệu trước khi gửi báo cáo.',pad,footerY+70);
+ canvas.toBlob(blob=>{
+   if(!blob){alert('Không tạo được ảnh trên trình duyệt này.');return}
+   if(share&&navigator.canShare&&navigator.share){const file=new File([blob],'Bao_cao_chi_tiet_quan_so_'+($('reportDate2').value||day())+'.png',{type:'image/png'});if(navigator.canShare({files:[file]})){navigator.share({files:[file],title:'Báo cáo quân số trực ban'}).catch(()=>{});return}}
+   const url=URL.createObjectURL(blob),a=document.createElement('a');
+   a.href=url;a.download='Bao_cao_chi_tiet_quan_so_'+($('reportDate2').value||day())+'.png';
+   document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+   $('copyStatus').textContent='Đã xuất ảnh báo cáo chi tiết PNG. Mở ảnh trong Tệp/Ảnh rồi chia sẻ lên nhóm Zalo.';
+ },'image/png');
+}
+$('exportImage').textContent='Xuất ảnh chi tiết PNG';
+$('exportImage').onclick=()=>exportReportImage();$('shareImage').onclick=()=>exportReportImage(true);
+if('serviceWorker' in navigator && location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+

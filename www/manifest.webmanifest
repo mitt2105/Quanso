@@ -1,0 +1,12 @@
+{
+  "name": "Quản lý quân số trực ban",
+  "short_name": "Quân số",
+  "description": "Theo dõi quân số trực ban ngoại tuyến trên thiết bị.",
+  "lang": "vi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f5",
+  "theme_color": "#123b32",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
